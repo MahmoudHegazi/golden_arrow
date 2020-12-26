@@ -6,8 +6,8 @@
   display: grid;
   width: 100px;
   border: 2px solid pink;
-  grid-template-rows: 50px 50px ;
-  grid-template-columns: 50px 50px;
+  grid-template-rows:  50px 50px ;
+  grid-template-columns:  50px 50px;
 
   grid-template-areas:
   "topLeft topRight"
@@ -43,6 +43,14 @@
 .coin {
 cursor: -webkit-grabbing; cursor: grabbing;
 }
+.area_container {
+ border: 8px solid rgb(200, 10, 50);
+ height: 200px;
+ width: 398px;
+}
+.area_container img {
+  width: 100%;
+}
 </style>
 </head>
 <body>
@@ -66,10 +74,17 @@ style="display:fixed;" src="https://www.w3schools.com/images/stickman.gif">
 <div style="display:flex;width:100px;height:100px;flex-wrap:wrap;display:none">
 
 </div>
+
+<div class="area_container" >
+<img id="fightimage" style="display:none;">
+</div>
 <div id="game_area" style="display:flex;width:500px;flex-wrap:wrap;">
 
 <!-- grid start PS -->
+
+
 <div class="container_grid">
+
 <div class="step top"></div>
 <div class="step bot"></div>
 <div class="step left"></div>
@@ -169,10 +184,12 @@ var score = document.querySelector('#score_text');
 var champ = document.querySelector('#champ');
 const steps = document.querySelectorAll('.step');
 const gamecontainer = document.querySelector('#game_area');
+const fight_image = document.querySelector('#fightimage');
 let score_index = 0;
 
 
-  
+
+  //https://thumbs.gfycat.com/ParallelForcefulBream-small.gif
 
 function myFunction(event) {
 
@@ -203,7 +220,7 @@ function myFunction(event) {
     
     
      document.querySelectorAll('.monster').forEach( (mon) => { 
-    mon.src = 'https://media3.giphy.com/media/5b5BcyHg2EP1JtZQZs/giphy.gif';
+    mon.src = 'https://media.giphy.com/media/xUOxfdXk1AHGzGotgI/giphy.gif';
     })
     
            warriror_message.textContent = "Warrior: That's what I need Cute Dpg Power Level: 4";
@@ -312,7 +329,26 @@ function attack(champion, monster) {
    let champ_lvl = champion.getAttribute('data-level');
    
 
+function show_fight() {
 
+// fight part
+
+fight_image.style.display = 'block';
+fight_image.src = 'https://thumbs.gfycat.com/ParallelForcefulBream-small.gif';
+
+/*
+function hide_fight() {
+fight_image.src = '';
+fight_image.style.display = 'none';
+}
+
+setTimeout(hide_fight, 3000);
+*/
+
+}
+
+
+show_fight();
    
       
    if ((champ_power * 2) - (monster.getAttribute('data-health') - champ_power)  <= 0 ) {
@@ -445,6 +481,17 @@ function drop_monster() {
 
 }
 steps.forEach( (elm) => {elm.addEventListener('click', myFunction )});
+
+
+
+
+
+
+
+steps.forEach( (elm) => {elm.addEventListener('click', myFunction )});
+
+
+
 
 function endgame() {
 setTimeout(function(){ gamecontainer.style.display = 'none' }, 3000);
