@@ -51,13 +51,24 @@ cursor: -webkit-grabbing; cursor: grabbing;
 .area_container img {
   width: 100%;
 }
+#wmessage {
+background-color: rgb(12 150 200); 
+color:white;
+width: 50%;
+padding: 10px;
+
+}
+#mmessage {background-color: red;
+padding: 10px;
+width: 50%;
+color:white;}
 </style>
 </head>
 <body>
 
 <p id="wmessage"></p>
 <p id="mmessage"></p>
-<p id="chat">chat: </p>
+<p id="chat">Game: </p>
 <p>Score: <span id="score_text" style="background-color:black;color:green;padding:10px;font-size:1em;font-weight:bold;font-family:lemon;"></span></p>
 
 
@@ -171,7 +182,6 @@ style="display:fixed;" src="https://www.w3schools.com/images/stickman.gif">
 
 
 
-
 <script>
 var guide = document.querySelector('#guide');
 var endimage = document.querySelector('#endimage');
@@ -186,8 +196,6 @@ const steps = document.querySelectorAll('.step');
 const gamecontainer = document.querySelector('#game_area');
 const fight_image = document.querySelector('#fightimage');
 let score_index = 0;
-
-
 
   //https://thumbs.gfycat.com/ParallelForcefulBream-small.gif
 
@@ -336,6 +344,8 @@ function show_fight() {
 fight_image.style.display = 'block';
 fight_image.src = 'https://thumbs.gfycat.com/ParallelForcefulBream-small.gif';
 
+warriror_message.textContent = 'Champion: Ok Take This Bad Monster';
+   monster_message.textContent = '';
 
 function hide_fight_champ() {
 fight_image.src = '';
@@ -350,6 +360,9 @@ setTimeout(hide_fight_champ, 2100);
 function show_damge_move() {
 fight_image.src = 'https://media.tenor.com/images/73e1f54d2df07daabb1ba4e2b1bb972f/tenor.gif';
 fight_image.style.display = 'block';
+chat.textContent = 'Game: Foooooo';
+monster_message.textContent = '';
+warriror_message.textContent = '';
 }
 setTimeout(show_damge_move, 2101);
 
@@ -358,14 +371,21 @@ setTimeout(show_damge_move, 2101);
 function monster_got_damge() {
 fight_image.src = 'https://media.tenor.com/images/c3fe234136b5bb3e7d41e1b68dbfc0a3/tenor.gif';
 fight_image.style.display = 'block';
-
+chat.textContent = '';
+monster_message.textContent = 'Monster: OHHHH fire fire  Why .....';
+warriror_message.textContent = '';
 }
-setTimeout(monster_got_damge, 2801);
+setTimeout(monster_got_damge, 3500);
 
 function end_fight_turn() {
 fight_image.src = '';
 fight_image.style.display = 'none';
 
+chat.textContent = '';
+monster_message.textContent = '';
+warriror_message.textContent = '';
+
+     
 }
 setTimeout(end_fight_turn, 7000);
 
@@ -397,6 +417,9 @@ setTimeout(hide_fight_champ, 2100);
 function end_fight_turn1() {
 fight_image.src = '';
 fight_image.style.display = 'none';
+chat.textContent = '';
+monster_message.textContent = '';
+warriror_message.textContent = '';
 
 }
 setTimeout(end_fight_turn1, 2101);
@@ -407,7 +430,9 @@ setTimeout(end_fight_turn1, 2101);
    
       
    if ((champ_power * 2) - (monster.getAttribute('data-health') - champ_power)  <= 0 ) {
-     alert('monster is dead');
+   
+
+     chat.textContent = 'monster is dead';
      event.target.remove();
    } else {
 
@@ -419,7 +444,9 @@ setTimeout(end_fight_turn1, 2101);
      
      // show the second action which kill the monster 
     show_fight_death();
-     alert('monster is dead');
+    
+
+     chat.textContent = 'monster is dead';
      monster.remove();
      document.querySelectorAll('.step')[0].appendChild(champ);
      score_index += 3;
@@ -429,7 +456,10 @@ setTimeout(end_fight_turn1, 2101);
 // if the champ still alive prepear for the next attack
 
    if(     ((champ_power * 2) - ((champ_power * 2)  - (monster.getAttribute('data-health') - champ_power))) > 0) {
-     alert('monster is alive will deduct from it ' +  champ.getAttribute('data-power'));
+   
+ 
+
+     
      monster.setAttribute('data-health', (event.target.getAttribute('data-health') - champ.getAttribute('data-power')));
      
      // show the champion while hit monster
@@ -439,9 +469,8 @@ setTimeout(end_fight_turn1, 2101);
      // now monster still alive and going to attack 9301 is what takes
      // to finish the show_fight function
      function attack_monster() {
-     alert('monster alive and going to attack');
-     
-     
+     //chat.textContent = 'monster alive and going to attack';
+
      // now show the monster when attack champion
      
 
@@ -451,25 +480,46 @@ setTimeout(end_fight_turn1, 2101);
 function monster_attack_move() {
 fight_image.src = 'https://i.imgur.com/vAXTNzQ.gif';
 fight_image.style.display = 'block';
+   monster_message.textContent = 'Monster: OK You Will Cry Now Champion';
+   warriror_message.textContent = '';
+   chat.textContent = '';
 }
 setTimeout(monster_attack_move, 100);
 
 // show monster damged
 
 function monster_damge_move() {
-fight_image.src = 'https://thumbs.gfycat.com/ScornfulAnchoredAvians-small.gif';
+fight_image.src = 'https://i.imgur.com/vAXTNzQ.gif';
 fight_image.style.display = 'block';
-
+   monster_message.textContent = 'Monster: This IS My Ultimate Attack';
+   warriror_message.textContent = '';
+   chat.textContent = '';
 }
 setTimeout(monster_damge_move, 3000);
+
+
+
+function champ_take_damg() {
+fight_image.src = 'https://thumbs.gfycat.com/ScornfulAnchoredAvians-small.gif';
+fight_image.style.display = 'block';
+   monster_message.textContent = '';
+   warriror_message.textContent = 'Champion: OHHH We take Damge Together becuase we are friends ';
+   chat.textContent = '';
+}
+setTimeout(champ_take_damg, 3001);
+
 
 
 function end_fight_turn1() {
 fight_image.src = '';
 fight_image.style.display = 'none';
 
+chat.textContent = '';
+monster_message.textContent = '';
+warriror_message.textContent = '';
+
 }
-setTimeout(end_fight_turn1, 5000);
+setTimeout(end_fight_turn1, 5800);
 
 
      }
