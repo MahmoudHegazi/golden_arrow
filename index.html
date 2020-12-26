@@ -39,6 +39,10 @@
 .monster {
  cursor: pointer;
 }
+
+.coin {
+cursor: -webkit-grabbing; cursor: grabbing;
+}
 </style>
 </head>
 <body>
@@ -371,7 +375,8 @@ function attack(champion, monster) {
   event.target.remove();
   parent.appendChild(champ);
   // add 1 to score
-  score_index += 1
+  score_index += 1;
+  
 
 
 
