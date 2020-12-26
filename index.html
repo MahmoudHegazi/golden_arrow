@@ -307,25 +307,6 @@ function attack(champion, monster) {
    let champ_exp = champion.getAttribute('data-exp');
    let champ_lvl = champion.getAttribute('data-level');
    
-   // check camp health
-   //alert(champ_health);
-   
-   // check monster health
-   //alert(monster_health);
-      // check camp power
-   //alert(champ_power);
-   
-   // check monster power
-   //alert(monster_power);
-   
-   // champ_attack 
-  // alert('Champion Attack On Monster with damge: ' + (monster_health - champ_power));
-   
-   // check champ monster 
-   //alert('Now Monster Health = ' + (monster_health - champ_power));
-   
-   
-   // do the action
 
 
    
@@ -335,51 +316,22 @@ function attack(champion, monster) {
      event.target.remove();
    } else {
 
+// if the campion killed the monster append champion to start and give exp
    if(     ((champ_power * 2) - ((champ_power * 2)  - (monster.getAttribute('data-health') - champ_power))) <= 0) {
      alert('monster is dead');
      monster.remove();
      document.querySelectorAll('.step')[0].appendChild(champ);
-     
+     score_index += 3;
+     score.textContent = score_index;
      
    }
-
+// if the champ still alive prepear for the next attack
 
    if(     ((champ_power * 2) - ((champ_power * 2)  - (monster.getAttribute('data-health') - champ_power))) > 0) {
      alert('monster is alive will deduct from it ' +  champ.getAttribute('data-power'));
      monster.setAttribute('data-health', (event.target.getAttribute('data-health') - champ.getAttribute('data-power')));
      
    }
-
-/*
-    
-*/
-   
-   
-   
- 
-   
-   
-   
-   
-   
-   
-   
-
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
    
    
    }
@@ -403,30 +355,8 @@ function attack(champion, monster) {
     let new_champ_power = champ.getAttribute('data-power');
     
        
-      //  if monster still a live do attack
-      /*
-   if (new_champ_power * 2 - event.target.getAttribute('data-health') > 0) {
-   alert('champ health is : ' + champ.getAttribute('data-health'));
-   }
 
-       
-   if (new_champ_power * 2 - event.target.getAttribute('data-health') <= 0) {
-   alert('monster health is : ' + event.target.getAttribute('data-health'));
-   alert('Monster is dead it give exp : ' + the_monster_exp);
-    
-    // update user exp
-     champ.setAttribute("data-exp", (new_champ_exp + the_monster_exp));
-     
-     alert('now champion exp is : ' + champ.getAttribute('data-exp'));
-   }
 
-   
-      //  if monster still a live do attack
-   if (new_champ_power * 2 - event.target.getAttribute('data-health') > 0) {
-   alert('Monster is alive and will fight with power of ' + the_monster_power);
-   }
-   
-*/
    }
    
     fight();
