@@ -76,7 +76,7 @@ style="display:fixed;" src="https://www.w3schools.com/images/stickman.gif">
 </div>
 
 <div class="area_container" >
-<img id="fightimage" style="display:none;">
+<img id="fightimage" style="display:none;" height="200">
 </div>
 <div id="game_area" style="display:flex;width:500px;flex-wrap:wrap;">
 
@@ -336,15 +336,40 @@ function show_fight() {
 fight_image.style.display = 'block';
 fight_image.src = 'https://thumbs.gfycat.com/ParallelForcefulBream-small.gif';
 
-/*
-function hide_fight() {
+
+function hide_fight_champ() {
 fight_image.src = '';
 fight_image.style.display = 'none';
 }
 
-setTimeout(hide_fight, 3000);
-*/
+setTimeout(hide_fight_champ, 2900);
 
+
+// show monster take damge
+
+function show_damge_move() {
+fight_image.src = 'https://media.tenor.com/images/73e1f54d2df07daabb1ba4e2b1bb972f/tenor.gif';
+fight_image.style.display = 'block';
+}
+setTimeout(show_damge_move, 2901);
+
+// show monster damged
+
+function monster_got_damge() {
+fight_image.src = 'https://media.tenor.com/images/c3fe234136b5bb3e7d41e1b68dbfc0a3/tenor.gif';
+fight_image.style.display = 'block';
+
+}
+setTimeout(monster_got_damge, 4200);
+
+function end_fight_turn() {
+fight_image.src = '';
+fight_image.style.display = 'none';
+
+}
+setTimeout(end_fight_turn, 9500);
+
+//
 }
 
 
