@@ -342,7 +342,7 @@ fight_image.src = '';
 fight_image.style.display = 'none';
 }
 
-setTimeout(hide_fight_champ, 2900);
+setTimeout(hide_fight_champ, 2100);
 
 
 // show monster take damge
@@ -351,7 +351,7 @@ function show_damge_move() {
 fight_image.src = 'https://media.tenor.com/images/73e1f54d2df07daabb1ba4e2b1bb972f/tenor.gif';
 fight_image.style.display = 'block';
 }
-setTimeout(show_damge_move, 2901);
+setTimeout(show_damge_move, 2101);
 
 // show monster damged
 
@@ -360,20 +360,50 @@ fight_image.src = 'https://media.tenor.com/images/c3fe234136b5bb3e7d41e1b68dbfc0
 fight_image.style.display = 'block';
 
 }
-setTimeout(monster_got_damge, 4200);
+setTimeout(monster_got_damge, 2801);
 
 function end_fight_turn() {
 fight_image.src = '';
 fight_image.style.display = 'none';
 
 }
-setTimeout(end_fight_turn, 9500);
+setTimeout(end_fight_turn, 7000);
 
 //
 }
 
 
-show_fight();
+// this fight when monster die
+
+function show_fight_death() {
+
+// fight part
+
+fight_image.style.display = 'block';
+fight_image.src = 'https://j.gifs.com/qjG20k.gif';
+
+
+function hide_fight_champ() {
+fight_image.src = '';
+fight_image.style.display = 'none';
+}
+
+setTimeout(hide_fight_champ, 2100);
+
+
+// show monster take damge
+
+
+function end_fight_turn1() {
+fight_image.src = '';
+fight_image.style.display = 'none';
+
+}
+setTimeout(end_fight_turn1, 2101);
+
+//
+}
+
    
       
    if ((champ_power * 2) - (monster.getAttribute('data-health') - champ_power)  <= 0 ) {
@@ -383,6 +413,12 @@ show_fight();
 
 // if the campion killed the monster append champion to start and give exp
    if(     ((champ_power * 2) - ((champ_power * 2)  - (monster.getAttribute('data-health') - champ_power))) <= 0) {
+   
+        // make the attack on monster before kill him
+     // https://j.gifs.com/qjG20k.gif
+     
+     // show the second action which kill the monster 
+    show_fight_death();
      alert('monster is dead');
      monster.remove();
      document.querySelectorAll('.step')[0].appendChild(champ);
@@ -396,6 +432,48 @@ show_fight();
      alert('monster is alive will deduct from it ' +  champ.getAttribute('data-power'));
      monster.setAttribute('data-health', (event.target.getAttribute('data-health') - champ.getAttribute('data-power')));
      
+     // show the champion while hit monster
+     
+    show_fight();
+     
+     // now monster still alive and going to attack 9301 is what takes
+     // to finish the show_fight function
+     function attack_monster() {
+     alert('monster alive and going to attack');
+     
+     
+     // now show the monster when attack champion
+     
+
+
+// show monster take damge
+
+function monster_attack_move() {
+fight_image.src = 'https://i.imgur.com/vAXTNzQ.gif';
+fight_image.style.display = 'block';
+}
+setTimeout(monster_attack_move, 100);
+
+// show monster damged
+
+function monster_damge_move() {
+fight_image.src = 'https://thumbs.gfycat.com/ScornfulAnchoredAvians-small.gif';
+fight_image.style.display = 'block';
+
+}
+setTimeout(monster_damge_move, 3000);
+
+
+function end_fight_turn1() {
+fight_image.src = '';
+fight_image.style.display = 'none';
+
+}
+setTimeout(end_fight_turn1, 5000);
+
+
+     }
+     setTimeout(attack_monster, 7001);
    }
    
    
